@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ACTION WINDOW -->
+    <record id="sav_ticket_action" model="ir.actions.act_window">
+        <field name="name">SAV Tickets</field>
+        <field name="res_model">sav.ticket</field>
+        <field name="view_mode">tree,form,kanban,calendar,graph,pivot</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('sav_ticket_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('sav_ticket_form')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('sav_ticket_kanban')}),
+            (0, 0, {'view_mode': 'calendar', 'view_id': ref('sav_ticket_calendar')}),
+            (0, 0, {'view_mode': 'graph', 'view_id': ref('sav_ticket_graph')}),
+            (0, 0, {'view_mode': 'pivot', 'view_id': ref('sav_ticket_pivot')}),
+        ]" />
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new SAV ticket.
+            </p>
+            <p>
+                Manage customer claims and after-sales service requests.
+            </p>
+        </field>
+    </record>
+
+</odoo>

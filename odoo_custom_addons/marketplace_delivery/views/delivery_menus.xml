@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- ROOT MENU - INDEPENDENT, NO PARENT, ALWAYS APPEARS IN SIDEBAR -->
+<menuitem id="marketplace_delivery_menu_root"
+          name="Delivery Management"
+          sequence="15"/>
+
+<!-- SUBMENU 1: Delivery Tasks -->
+<menuitem id="marketplace_delivery_menu_tasks"
+          name="Delivery Tasks"
+          parent="marketplace_delivery_menu_root"
+          action="marketplace_delivery_action_task"
+          sequence="10"/>
+
+<!-- SUBMENU 2: Delivery Routes -->
+<menuitem id="marketplace_delivery_menu_routes"
+          name="Delivery Routes"
+          parent="marketplace_delivery_menu_root"
+          action="marketplace_delivery_action_route"
+          sequence="20"/>
+
+<!-- SUBMENU 3: Calendar View -->
+<menuitem id="marketplace_delivery_menu_calendar"
+          name="Calendar"
+          parent="marketplace_delivery_menu_root"
+          action="marketplace_delivery_action_task"
+          sequence="30"/>
+
+<!-- SUBMENU 4: Statistics -->
+<menuitem id="marketplace_delivery_menu_statistics"
+          name="Statistics"
+          parent="marketplace_delivery_menu_root"
+          sequence="40"/>
+
+</odoo>

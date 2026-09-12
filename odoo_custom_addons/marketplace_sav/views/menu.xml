@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- MAIN MENU -->
+    <menuitem id="sav_menu_root" name="Service Après Vente" sequence="100" />
+
+    <!-- TICKETS MENU -->
+    <menuitem
+        id="sav_menu_tickets"
+        name="SAV Tickets"
+        parent="sav_menu_root"
+        action="sav_ticket_action"
+        sequence="10"
+    />
+
+</odoo>

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- ============= DELIVERY TASK VIEWS ============= -->
+
+<!-- Delivery Task Tree View -->
+<record id="marketplace_delivery_view_task_tree" model="ir.ui.view">
+<field name="name">marketplace.delivery.task.tree</field>
+<field name="model">marketplace.delivery.task</field>
+<field name="arch" type="xml">
+<tree>
+<field name="tracking_number"/>
+<field name="name"/>
+<field name="delivery_person"/>
+<field name="customer"/>
+<field name="status"/>
+<field name="expected_date"/>
+<field name="priority"/>
+</tree>
+</field>
+</record>
+
+<!-- Delivery Task Form View -->
+<record id="marketplace_delivery_view_task_form" model="ir.ui.view">
+<field name="name">marketplace.delivery.task.form</field>
+<field name="model">marketplace.delivery.task</field>
+<field name="arch" type="xml">
+<form>
+<sheet>
+<div class="oe_button_box" name="button_box">
+<button name="action_mark_in_transit" type="object" class="oe_stat_button" icon="fa-truck" string="In Transit" states="assigned"/>
+<button name="action_mark_delivered" type="object" class="oe_stat_button" icon="fa-check-circle" string="Delivered" states="in_transit"/>
+<button name="action_cancel" type="object" class="oe_stat_button" icon="fa-times-circle" string="Cancel" states="pending,assigned"/>
+</div>
+<div class="oe_title">
+<h1>
+<field name="tracking_number" readonly="1"/>
+</h1>
+</div>
+<group>
+<group>
+<field name="name"/>
+<field name="status" widget="badge" decoration-success="status=='delivered'" decoration-info="status=='in_transit'" decoration-danger="status=='cancelled'"/>
+<field name="priority"/>
+</group>
+<group>
+<field name="route_id"/>
+<field name="done_date"/>
+</group>
+</group>
+<group string="People">
+<field name="delivery_person"/>
+<field name="customer"/>
+</group>
+<group string="Addresses">
+<field name="address_pickup"/>
+<field name="address_dropoff"/>
+</group>
+<group string="Dates">
+<field name="expected_date"/>
+<field name="done_date"/>
+</group>
+<group string="Notes">
+<field name="notes"/>
+</group>
+</sheet>
+</form>
+</field>
+</record>
+
+<!-- Delivery Task Kanban View -->
+<record id="marketplace_delivery_view_task_kanban" model="ir.ui.view">
+<field name="name">marketplace.delivery.task.kanban</field>
+<field name="model">marketplace.delivery.task</field>
+<field name="arch" type="xml">
+<kanban default_group_by="status">
+<templates>
+<t t-name="kanban-box">
+<div class="oe_kanban_card oe_kanban_global_click">
+<div class="oe_kanban_content">
+<strong><field name="tracking_number"/></strong>
+<br/>
+<div class="text-muted">
+<field name="name"/>
+</div>
+<br/>
+<small>To: <field name="customer"/></small>
+<br/>
+<small>Person: <field name="delivery_person"/></small>
+<br/>
+<span class="badge badge-secondary">
+<field name="status"/>
+</span>
+</div>
+</div>
+</t>
+</templates>
+</kanban>
+</field>
+</record>
+
+<!-- Delivery Task Calendar View -->
+<record id="marketplace_delivery_view_task_calendar" model="ir.ui.view">
+<field name="name">marketplace.delivery.task.calendar</field>
+<field name="model">marketplace.delivery.task</field>
+<field name="arch" type="xml">
+<calendar date_start="expected_date" date_stop="done_date" string="Delivery Schedule" color="status">
+<field name="tracking_number"/>
+<field name="customer"/>
+<field name="delivery_person"/>
+<field name="status"/>
+</calendar>
+</field>
+</record>
+
+<!-- Delivery Task Pivot View -->
+<record id="marketplace_delivery_view_task_pivot" model="ir.ui.view">
+<field name="name">marketplace.delivery.task.pivot</field>
+<field name="model">marketplace.delivery.task</field>
+<field name="arch" type="xml">
+<pivot>
+<field name="status" type="row"/>
+<field name="delivery_person" type="col"/>
+<field name="expected_date" type="measure" interval="day"/>
+</pivot>
+</field>
+</record>
+
+<!-- Delivery Task Graph View -->
+<record id="marketplace_delivery_view_task_graph" model="ir.ui.view">
+<field name="name">marketplace.delivery.task.graph</field>
+<field name="model">marketplace.delivery.task</field>
+<field name="arch" type="xml">
+<graph string="Tasks by Status" type="bar">
+<field name="status" type="row"/>
+<field name="priority" type="measure"/>
+</graph>
+</field>
+</record>
+
+<!-- Delivery Task Search View -->
+<record id="marketplace_delivery_view_task_search" model="ir.ui.view">
+<field name="name">marketplace.delivery.task.search</field>
+<field name="model">marketplace.delivery.task</field>
+<field name="arch" type="xml">
+<search>
+<field name="tracking_number"/>
+<field name="name"/>
+<field name="delivery_person"/>
+<field name="customer"/>
+<field name="status"/>
+<separator/>
+<filter name="filter_pending" string="Pending" domain="[('status', '=', 'pending')]"/>
+<filter name="filter_in_transit" string="In Transit" domain="[('status', '=', 'in_transit')]"/>
+<filter name="filter_delivered" string="Delivered" domain="[('status', '=', 'delivered')]"/>
+<separator/>
+<group string="Group By" expand="0">
+<filter name="group_by_status" string="Status" context="{'group_by': 'status'}"/>
+<filter name="group_by_person" string="Delivery Person" context="{'group_by': 'delivery_person'}"/>
+<filter name="group_by_priority" string="Priority" context="{'group_by': 'priority'}"/>
+</group>
+</search>
+</field>
+</record>
+
+<!-- ============= DELIVERY ROUTE VIEWS ============= -->
+
+<!-- Delivery Route Tree View -->
+<record id="marketplace_delivery_view_route_tree" model="ir.ui.view">
+<field name="name">marketplace.delivery.route.tree</field>
+<field name="model">marketplace.delivery.route</field>
+<field name="arch" type="xml">
+<tree>
+<field name="name"/>
+<field name="delivery_person"/>
+<field name="date"/>
+<field name="total_tasks"/>
+<field name="completed_tasks"/>
+<field name="state"/>
+</tree>
+</field>
+</record>
+
+<!-- Delivery Route Form View -->
+<record id="marketplace_delivery_view_route_form" model="ir.ui.view">
+<field name="name">marketplace.delivery.route.form</field>
+<field name="model">marketplace.delivery.route</field>
+<field name="arch" type="xml">
+<form>
+<sheet>
+<div class="oe_button_box" name="button_box">
+<button name="action_activate" type="object" class="oe_stat_button" icon="fa-play" string="Activate" states="draft"/>
+<button name="action_complete" type="object" class="oe_stat_button" icon="fa-check" string="Complete" states="active"/>
+</div>
+<div class="oe_title">
+<h1>
+<field name="name"/>
+</h1>
+</div>
+<group>
+<group>
+<field name="delivery_person"/>
+<field name="state" widget="badge" decoration-success="state=='done'" decoration-info="state=='active'" decoration-warning="state=='draft'"/>
+</group>
+<group>
+<field name="date"/>
+<field name="total_tasks" readonly="1"/>
+<field name="completed_tasks" readonly="1"/>
+</group>
+</group>
+<group string="Tasks">
+<field name="task_ids" nolabel="1">
+<tree>
+<field name="tracking_number"/>
+<field name="name"/>
+<field name="customer"/>
+<field name="status"/>
+</tree>
+</field>
+</group>
+</sheet>
+</form>
+</field>
+</record>
+
+<!-- Delivery Route Kanban View -->
+<record id="marketplace_delivery_view_route_kanban" model="ir.ui.view">
+<field name="name">marketplace.delivery.route.kanban</field>
+<field name="model">marketplace.delivery.route</field>
+<field name="arch" type="xml">
+<kanban default_group_by="state">
+<templates>
+<t t-name="kanban-box">
+<div class="oe_kanban_card oe_kanban_global_click">
+<div class="oe_kanban_content">
+<strong><field name="name"/></strong>
+<br/>
+<small>Person: <field name="delivery_person"/></small>
+<br/>
+<small>Date: <field name="date"/></small>
+<br/>
+<span class="badge badge-info">
+Tasks: <field name="total_tasks"/> / Completed: <field name="completed_tasks"/>
+</span>
+</div>
+</div>
+</t>
+</templates>
+</kanban>
+</field>
+</record>
+
+<!-- Delivery Route Calendar View -->
+<record id="marketplace_delivery_view_route_calendar" model="ir.ui.view">
+<field name="name">marketplace.delivery.route.calendar</field>
+<field name="model">marketplace.delivery.route</field>
+<field name="arch" type="xml">
+<calendar date_start="date" string="Route Schedule" color="state">
+<field name="name"/>
+<field name="delivery_person"/>
+<field name="total_tasks"/>
+<field name="state"/>
+</calendar>
+</field>
+</record>
+
+<!-- Delivery Route Pivot View -->
+<record id="marketplace_delivery_view_route_pivot" model="ir.ui.view">
+<field name="name">marketplace.delivery.route.pivot</field>
+<field name="model">marketplace.delivery.route</field>
+<field name="arch" type="xml">
+<pivot>
+<field name="state" type="row"/>
+<field name="delivery_person" type="col"/>
+<field name="total_tasks" type="measure"/>
+</pivot>
+</field>
+</record>
+
+<!-- Delivery Route Graph View -->
+<record id="marketplace_delivery_view_route_graph" model="ir.ui.view">
+<field name="name">marketplace.delivery.route.graph</field>
+<field name="model">marketplace.delivery.route</field>
+<field name="arch" type="xml">
+<graph string="Routes by Status" type="bar">
+<field name="state" type="row"/>
+<field name="total_tasks" type="measure"/>
+</graph>
+</field>
+</record>
+
+<!-- Delivery Route Search View -->
+<record id="marketplace_delivery_view_route_search" model="ir.ui.view">
+<field name="name">marketplace.delivery.route.search</field>
+<field name="model">marketplace.delivery.route</field>
+<field name="arch" type="xml">
+<search>
+<field name="name"/>
+<field name="delivery_person"/>
+<field name="date"/>
+<field name="state"/>
+<separator/>
+<filter name="filter_draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+<filter name="filter_active" string="Active" domain="[('state', '=', 'active')]"/>
+<filter name="filter_done" string="Done" domain="[('state', '=', 'done')]"/>
+<separator/>
+<group string="Group By" expand="0">
+<filter name="group_by_state" string="State" context="{'group_by': 'state'}"/>
+<filter name="group_by_person" string="Delivery Person" context="{'group_by': 'delivery_person'}"/>
+<filter name="group_by_date" string="Date" context="{'group_by': 'date'}"/>
+</group>
+</search>
+</field>
+</record>
+
+</odoo>

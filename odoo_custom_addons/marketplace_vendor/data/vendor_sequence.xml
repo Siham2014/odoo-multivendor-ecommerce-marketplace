@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vendor Payout Sequence -->
+    <record id="seq_vendor_payout" model="ir.sequence">
+        <field name="name">Vendor Payout Sequence</field>
+        <field name="code">marketplace.vendor.payout</field>
+        <field name="prefix">PAYOUT/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+
+</odoo>

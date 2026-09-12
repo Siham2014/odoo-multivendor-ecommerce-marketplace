@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- Delivery Task Window Action -->
+<record id="marketplace_delivery_action_task" model="ir.actions.act_window">
+<field name="name">Delivery Tasks</field>
+<field name="res_model">marketplace.delivery.task</field>
+<field name="view_mode">tree,form,kanban,calendar,pivot,graph</field>
+<field name="search_view_id" ref="marketplace_delivery.marketplace_delivery_view_task_search"/>
+<field name="context">{}</field>
+<field name="help" type="html">
+<p class="o_view_nocontent_smiling_face">
+Create your first delivery task
+</p>
+</field>
+</record>
+
+<!-- Delivery Route Window Action -->
+<record id="marketplace_delivery_action_route" model="ir.actions.act_window">
+<field name="name">Delivery Routes</field>
+<field name="res_model">marketplace.delivery.route</field>
+<field name="view_mode">tree,form,kanban,calendar,pivot,graph</field>
+<field name="search_view_id" ref="marketplace_delivery.marketplace_delivery_view_route_search"/>
+<field name="context">{}</field>
+<field name="help" type="html">
+<p class="o_view_nocontent_smiling_face">
+Create your first delivery route
+</p>
+</field>
+</record>
+
+</odoo>

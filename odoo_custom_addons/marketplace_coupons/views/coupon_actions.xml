@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Coupons Action Window -->
+<record id="marketplace_coupons_action_coupon" model="ir.actions.act_window">
+<field name="name">Coupons</field>
+<field name="res_model">marketplace.coupon</field>
+<field name="view_mode">tree,form,kanban,pivot,graph</field>
+<field name="search_view_id" ref="marketplace_coupons.marketplace_coupons_view_coupon_search"/>
+<field name="context">{}</field>
+<field name="help" type="html">
+<p class="o_view_nocontent_smiling_face">
+Create your first coupon
+</p>
+</field>
+</record>
+
+<!-- Dynamic Pricing Action Window -->
+<record id="marketplace_coupons_action_pricing" model="ir.actions.act_window">
+<field name="name">Dynamic Pricing Rules</field>
+<field name="res_model">marketplace.dynamic.pricing</field>
+<field name="view_mode">tree,form</field>
+<field name="search_view_id" ref="marketplace_coupons.marketplace_coupons_view_pricing_search"/>
+<field name="context">{}</field>
+<field name="help" type="html">
+<p class="o_view_nocontent_smiling_face">
+Configure pricing strategy for vendors
+</p>
+</field>
+</record>
+</odoo>

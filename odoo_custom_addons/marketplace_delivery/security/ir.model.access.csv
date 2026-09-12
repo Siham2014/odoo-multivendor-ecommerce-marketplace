@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_marketplace_delivery_task_admin,marketplace.delivery.task access,model_marketplace_delivery_task,base.group_system,1,1,1,1
+access_marketplace_delivery_route_admin,marketplace.delivery.route access,model_marketplace_delivery_route,base.group_system,1,1,1,1

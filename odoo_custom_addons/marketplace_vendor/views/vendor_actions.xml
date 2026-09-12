@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="marketplace_vendor_action_window" model="ir.actions.act_window">
+<field name="name">Vendors</field>
+<field name="res_model">marketplace.vendor</field>
+<field name="view_mode">tree,form,kanban</field>
+<field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'tree', 'view_id': ref('marketplace_vendor_tree_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('marketplace_vendor_form_view')}), (0, 0, {'view_mode': 'kanban', 'view_id': ref('marketplace_vendor_kanban_view')})]"/>
+<field name="search_view_id" ref="marketplace_vendor_search_view"/>
+</record>
+<record id="marketplace_vendor_product_action_window" model="ir.actions.act_window">
+<field name="name">Vendor Products</field>
+<field name="res_model">marketplace.vendor.product</field>
+<field name="view_mode">tree,form</field>
+<field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'tree', 'view_id': ref('marketplace_vendor_product_tree_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('marketplace_vendor_product_form_view')})]"/>
+<field name="search_view_id" ref="marketplace_vendor_product_search_view"/>
+</record>
+<record id="marketplace_vendor_payout_action_window" model="ir.actions.act_window">
+<field name="name">Vendor Payouts</field>
+<field name="res_model">marketplace.vendor.payout</field>
+<field name="view_mode">tree,form</field>
+<field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'tree', 'view_id': ref('marketplace_vendor_payout_tree_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('marketplace_vendor_payout_form_view')})]"/>
+<field name="search_view_id" ref="marketplace_vendor_payout_search_view"/>
+</record>
+</odoo>

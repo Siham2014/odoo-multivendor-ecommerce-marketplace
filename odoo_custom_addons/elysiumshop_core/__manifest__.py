@@ -1,0 +1,25 @@
+{
+    'name': 'ElysiumShop Core',
+    'version': '16.0.1.0.0',
+    'category': 'Sales',
+    'summary': 'Core module for ElysiumShop marketplace',
+    'author': 'ElysiumShop Dev Team',
+    'license': 'LGPL-3',
+    'depends': [
+        'base',
+        'sale',
+        'product',
+        'stock',
+        'web',
+        'mail',
+    ],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/menuitems.xml',
+        'views/vendor_views.xml',
+        'views/delivery_person_views.xml',
+        'views/product_views.xml',
+    ],
+    'installable': True,
+    'auto_install': False,
+}

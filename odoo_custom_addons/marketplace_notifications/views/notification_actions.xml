@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- Notification Window Action -->
+<record id="marketplace_notifications_action_notification" model="ir.actions.act_window">
+<field name="name">Notifications</field>
+<field name="res_model">marketplace.notification</field>
+<field name="view_mode">tree,form,kanban,pivot,graph</field>
+<field name="search_view_id" ref="marketplace_notifications.marketplace_notifications_view_notification_search"/>
+<field name="context">{}</field>
+<field name="help" type="html">
+<p class="o_view_nocontent_smiling_face">
+No notifications yet. Create your first notification.
+</p>
+</field>
+</record>
+
+<!-- ROOT MENU - INDEPENDENT, NO PARENT, ALWAYS APPEARS IN SIDEBAR -->
+<menuitem id="marketplace_notifications_menu_root"
+          name="Notifications"
+          sequence="16"/>
+
+<!-- SUBMENU: All Notifications -->
+<menuitem id="marketplace_notifications_menu_notification"
+          name="All Notifications"
+          parent="marketplace_notifications_menu_root"
+          action="marketplace_notifications_action_notification"
+          sequence="10"/>
+
+</odoo>

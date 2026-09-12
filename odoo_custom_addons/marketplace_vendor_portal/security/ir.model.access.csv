@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_template,Portal Product Template Access,product.model_product_template,marketplace_vendor_portal.vendor_portal_user,1,0,0,0
+access_sale_order,Portal Sale Order Access,sale.model_sale_order,marketplace_vendor_portal.vendor_portal_user,1,0,0,0
+access_delivery_task,Portal Delivery Task Access,marketplace_delivery.model_marketplace_delivery_task,marketplace_vendor_portal.vendor_portal_user,1,0,0,0
+access_sav_ticket,Portal SAV Ticket Access,marketplace_sav.model_marketplace_sav_ticket,marketplace_vendor_portal.vendor_portal_user,1,0,0,0
+access_notification,Portal Notification Access,marketplace_notifications.model_marketplace_notification,marketplace_vendor_portal.vendor_portal_user,1,0,0,0

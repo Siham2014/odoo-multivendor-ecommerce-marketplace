@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- CALENDAR VIEW -->
+    <record id="sav_ticket_calendar" model="ir.ui.view">
+        <field name="name">SAV Ticket Calendar</field>
+        <field name="model">sav.ticket</field>
+        <field name="arch" type="xml">
+            <calendar string="SAV Tickets" date_start="create_date" color="state">
+                <field name="name" />
+                <field name="customer_id" />
+                <field name="reason" />
+                <field name="state" />
+            </calendar>
+        </field>
+    </record>
+
+</odoo>

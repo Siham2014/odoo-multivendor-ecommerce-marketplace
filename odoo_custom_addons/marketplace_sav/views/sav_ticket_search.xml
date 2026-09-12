@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- SEARCH VIEW -->
+    <record id="sav_ticket_search" model="ir.ui.view">
+        <field name="name">SAV Ticket Search</field>
+        <field name="model">sav.ticket</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Ticket Number" />
+                <field name="customer_id" />
+                <field name="product_id" />
+                <field name="order_id" />
+                <field name="reason" />
+                <field name="responsible_id" />
+
+                <separator />
+
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]" />
+                <filter name="submitted" string="Submitted" domain="[('state', '=', 'submitted')]" />
+                <filter name="assigned" string="Assigned" domain="[('state', '=', 'assigned')]" />
+                <filter name="in_progress" string="In Progress" domain="[('state', '=', 'in_progress')]" />
+                <filter name="approved" string="Approved" domain="[('state', '=', 'approved')]" />
+                <filter name="rejected" string="Rejected" domain="[('state', '=', 'rejected')]" />
+                <filter name="refunded" string="Refunded" domain="[('state', '=', 'refunded')]" />
+                <filter name="closed" string="Closed" domain="[('state', '=', 'closed')]" />
+
+                <separator />
+
+                <filter name="my_tickets" string="My Tickets" domain="[('responsible_id', '=', uid)]" />
+
+                <separator />
+
+                <filter name="filter_defect" string="Product Defect" domain="[('reason', '=', 'defect')]" />
+                <filter name="filter_damaged" string="Damaged on Arrival" domain="[('reason', '=', 'damaged')]" />
+                <filter name="filter_missing_parts" string="Missing Parts" domain="[('reason', '=', 'missing_parts')]" />
+                <filter name="filter_wrong_item" string="Wrong Item" domain="[('reason', '=', 'wrong_item')]" />
+
+                <separator />
+
+                <group expand="0" string="Group By">
+                    <filter name="group_state" string="State" context="{'group_by': 'state'}" />
+                    <filter name="group_reason" string="Reason" context="{'group_by': 'reason'}" />
+                    <filter name="group_customer" string="Customer" context="{'group_by': 'customer_id'}" />
+                    <filter name="group_product" string="Product" context="{'group_by': 'product_id'}" />
+                    <filter name="group_responsible" string="Responsible" context="{'group_by': 'responsible_id'}" />
+                    <filter name="group_create_date" string="Creation Date" context="{'group_by': 'create_date'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

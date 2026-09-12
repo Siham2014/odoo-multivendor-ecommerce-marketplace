@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Independent Root Menu - NO parent dependency -->
+<menuitem id="marketplace_coupons_menu_root" name="Coupons &amp; Pricing" sequence="100"/>
+
+<!-- Coupons Submenu -->
+<menuitem id="marketplace_coupons_menu_coupon" name="All Coupons" parent="marketplace_coupons_menu_root" action="marketplace_coupons_action_coupon" sequence="10"/>
+
+<!-- Dynamic Pricing Submenu -->
+<menuitem id="marketplace_coupons_menu_pricing" name="Dynamic Pricing" parent="marketplace_coupons_menu_root" action="marketplace_coupons_action_pricing" sequence="20"/>
+</odoo>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- ============= NOTIFICATION VIEWS ============= -->
+
+<!-- Notification Tree View -->
+<record id="marketplace_notifications_view_notification_tree" model="ir.ui.view">
+<field name="name">marketplace.notification.tree</field>
+<field name="model">marketplace.notification</field>
+<field name="arch" type="xml">
+<tree>
+<field name="title"/>
+<field name="user_id"/>
+<field name="notification_type"/>
+<field name="state"/>
+<field name="trigger_datetime"/>
+<field name="created_at"/>
+</tree>
+</field>
+</record>
+
+<!-- Notification Form View -->
+<record id="marketplace_notifications_view_notification_form" model="ir.ui.view">
+<field name="name">marketplace.notification.form</field>
+<field name="model">marketplace.notification</field>
+<field name="arch" type="xml">
+<form>
+<sheet>
+<div class="oe_button_box" name="button_box">
+<button name="action_mark_as_read" type="object" class="oe_stat_button" icon="fa-eye" string="Mark as Read" states="new,sent"/>
+<button name="action_mark_as_sent" type="object" class="oe_stat_button" icon="fa-send" string="Mark as Sent" states="new"/>
+<button name="action_resend" type="object" class="oe_stat_button" icon="fa-redo" string="Resend" states="sent,read"/>
+</div>
+<div class="oe_title">
+<h1>
+<field name="title"/>
+</h1>
+</div>
+<group>
+<group>
+<field name="notification_type" widget="badge" decoration-info="notification_type=='info'" decoration-warning="notification_type=='warning'" decoration-danger="notification_type=='error'"/>
+<field name="state" widget="badge" decoration-success="state=='read'" decoration-info="state=='sent'" decoration-warning="state=='new'"/>
+<field name="user_id"/>
+</group>
+<group>
+<field name="trigger_datetime"/>
+<field name="created_at" readonly="1"/>
+</group>
+</group>
+<group string="Message">
+<field name="message" nolabel="1"/>
+</group>
+<group string="Related Record">
+<field name="related_model" placeholder="e.g., sale.order"/>
+<field name="related_record_id" placeholder="e.g., 123"/>
+</group>
+</sheet>
+</form>
+</field>
+</record>
+
+<!-- Notification Kanban View -->
+<record id="marketplace_notifications_view_notification_kanban" model="ir.ui.view">
+<field name="name">marketplace.notification.kanban</field>
+<field name="model">marketplace.notification</field>
+<field name="arch" type="xml">
+<kanban default_group_by="state">
+<templates>
+<t t-name="kanban-box">
+<div class="oe_kanban_card oe_kanban_global_click">
+<div class="oe_kanban_content">
+<strong><field name="title"/></strong>
+<br/>
+<div class="text-muted">
+<field name="message"/>
+</div>
+<br/>
+<small>User: <field name="user_id"/></small>
+<br/>
+<span t-attf-class="badge {'badge-success' if record.state.raw_value=='read' else 'badge-warning' if record.state.raw_value=='sent' else 'badge-info'}">
+<field name="state"/>
+</span>
+<span t-attf-class="badge {'badge-info' if record.notification_type.raw_value=='info' else 'badge-warning' if record.notification_type.raw_value=='warning' else 'badge-danger'}">
+<field name="notification_type"/>
+</span>
+</div>
+</div>
+</t>
+</templates>
+</kanban>
+</field>
+</record>
+
+<!-- Notification Search View -->
+<record id="marketplace_notifications_view_notification_search" model="ir.ui.view">
+<field name="name">marketplace.notification.search</field>
+<field name="model">marketplace.notification</field>
+<field name="arch" type="xml">
+<search>
+<field name="title"/>
+<field name="message"/>
+<field name="user_id"/>
+<field name="notification_type"/>
+<field name="state"/>
+<separator/>
+<filter name="filter_new" string="New" domain="[('state', '=', 'new')]"/>
+<filter name="filter_sent" string="Sent" domain="[('state', '=', 'sent')]"/>
+<filter name="filter_read" string="Read" domain="[('state', '=', 'read')]"/>
+<separator/>
+<filter name="filter_error" string="Errors" domain="[('notification_type', '=', 'error')]"/>
+<filter name="filter_warning" string="Warnings" domain="[('notification_type', '=', 'warning')]"/>
+<separator/>
+<filter name="filter_my_notifications" string="My Notifications" domain="[('user_id', '=', uid)]"/>
+<separator/>
+<group string="Group By" expand="0">
+<filter name="group_by_state" string="State" context="{'group_by': 'state'}"/>
+<filter name="group_by_type" string="Type" context="{'group_by': 'notification_type'}"/>
+<filter name="group_by_user" string="User" context="{'group_by': 'user_id'}"/>
+<filter name="group_by_date" string="Date" context="{'group_by': 'trigger_datetime'}"/>
+</group>
+</search>
+</field>
+</record>
+
+<!-- Notification Pivot View -->
+<record id="marketplace_notifications_view_notification_pivot" model="ir.ui.view">
+<field name="name">marketplace.notification.pivot</field>
+<field name="model">marketplace.notification</field>
+<field name="arch" type="xml">
+<pivot>
+<field name="state" type="row"/>
+<field name="notification_type" type="col"/>
+<field name="id" type="measure"/>
+</pivot>
+</field>
+</record>
+
+<!-- Notification Graph View -->
+<record id="marketplace_notifications_view_notification_graph" model="ir.ui.view">
+<field name="name">marketplace.notification.graph</field>
+<field name="model">marketplace.notification</field>
+<field name="arch" type="xml">
+<graph string="Notifications Overview" type="bar">
+<field name="state" type="row"/>
+<field name="notification_type" type="row"/>
+</graph>
+</field>
+</record>
+
+</odoo>

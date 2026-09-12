@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        ElysiumShop Main Menu Structure
+        Defines the top-level "ElysiumShop" app menu and its submenus.
+    -->
+
+    <!-- Root Menu: ElysiumShop App -->
+    <menuitem
+        id="elysiumshop_menu_root"
+        name="ElysiumShop"
+        sequence="90"
+        web_icon="elysiumshop_core,static/description/icon.png"
+    />
+
+    <!-- Submenu: Vendors -->
+    <menuitem
+        id="elysiumshop_menu_vendors"
+        name="Vendors"
+        parent="elysiumshop_menu_root"
+        action="elysiumshop_vendor_action"
+        sequence="10"
+    />
+
+    <!-- Submenu: Delivery Persons -->
+    <menuitem
+        id="elysiumshop_menu_delivery_persons"
+        name="Delivery Persons"
+        parent="elysiumshop_menu_root"
+        action="elysiumshop_delivery_person_action"
+        sequence="20"
+    />
+
+</odoo>

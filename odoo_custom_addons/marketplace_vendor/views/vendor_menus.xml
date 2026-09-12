@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Root menu -->
+    <menuitem id="menu_marketplace_vendor_root"
+              name="Marketplace Vendors"
+              sequence="10"
+              groups="base.group_system"/>
+
+    <!-- Vendors submenu -->
+    <menuitem id="menu_marketplace_vendor"
+              name="Vendors"
+              parent="menu_marketplace_vendor_root"
+              action="marketplace_vendor_action_window"
+              sequence="10"/>
+
+    <!-- Vendor Products submenu -->
+    <menuitem id="menu_marketplace_vendor_products"
+              name="Vendor Products"
+              parent="menu_marketplace_vendor_root"
+              action="marketplace_vendor_product_action_window"
+              sequence="20"/>
+
+    <!-- Vendor Payouts submenu -->
+    <menuitem id="menu_marketplace_vendor_payouts"
+              name="Vendor Payouts"
+              parent="menu_marketplace_vendor_root"
+              action="marketplace_vendor_payout_action_window"
+              sequence="30"/>
+
+</odoo>

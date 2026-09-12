@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- PIVOT VIEW -->
+    <record id="sav_ticket_pivot" model="ir.ui.view">
+        <field name="name">SAV Ticket Pivot</field>
+        <field name="model">sav.ticket</field>
+        <field name="arch" type="xml">
+            <pivot string="SAV Tickets Pivot">
+                <field name="state" type="row" />
+                <field name="reason" type="col" />
+                <field name="id" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+</odoo>

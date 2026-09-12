@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="marketplace_coupons_group_coupon_user" model="res.groups">
+<field name="name">Coupon User</field>
+<field name="category_id" ref="base.module_category_hidden"/>
+<field name="comment">Can view and manage their own coupons</field>
+</record>
+<record id="marketplace_coupons_group_coupon_manager" model="res.groups">
+<field name="name">Coupon Manager</field>
+<field name="category_id" ref="base.module_category_hidden"/>
+<field name="comment">Full access to all coupons and pricing rules</field>
+<field name="implied_ids" eval="[(4, ref('marketplace_coupons_group_coupon_user'))]"/>
+</record>
+</odoo>

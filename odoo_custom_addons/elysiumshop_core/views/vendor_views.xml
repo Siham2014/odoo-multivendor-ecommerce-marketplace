@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vendor Tree View -->
+    <record id="elysiumshop_vendor_tree" model="ir.ui.view">
+        <field name="name">Vendor Tree View</field>
+        <field name="model">elysiumshop.vendor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="email" />
+                <field name="user_id" />
+                <field name="status" />
+                <field name="commission_rate" />
+                <field name="product_count" />
+                <field name="avg_rating" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vendor Form View -->
+    <record id="elysiumshop_vendor_form" model="ir.ui.view">
+        <field name="name">Vendor Form View</field>
+        <field name="model">elysiumshop.vendor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_products" type="object" class="oe_stat_button" icon="fa-shopping-cart">
+                            <field name="product_count" widget="statinfo" string="Products" />
+                        </button>
+                    </div>
+                    
+                    <h1>
+                        <field name="name" class="oe_inline" />
+                    </h1>
+                    
+                    <div class="oe_title">
+                        <label for="status" />
+                        <h2>
+                            <field name="status" />
+                        </h2>
+                    </div>
+                    
+                    <group>
+                        <group>
+                            <field name="email" />
+                            <field name="phone" />
+                            <field name="user_id" />
+                        </group>
+                        <group>
+                            <field name="commission_rate" widget="float" />
+                            <field name="created_date" />
+                            <field name="avg_rating" />
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Business Information">
+                            <group>
+                                <field name="vendor_description" />
+                                <field name="payout_bank_account" />
+                                <field name="total_sales" readonly="1" />
+                            </group>
+                        </page>
+                        <page string="Address">
+                            <group>
+                                <field name="street" />
+                                <field name="street2" />
+                                <field name="city" />
+                                <field name="state_id" />
+                                <field name="zip" />
+                                <field name="country_id" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vendor Action -->
+    <record id="elysiumshop_vendor_action" model="ir.actions.act_window">
+        <field name="name">Vendors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">elysiumshop.vendor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new vendor profile.
+            </p>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- GRAPH VIEW -->
+    <record id="sav_ticket_graph" model="ir.ui.view">
+        <field name="name">SAV Ticket Graph</field>
+        <field name="model">sav.ticket</field>
+        <field name="arch" type="xml">
+            <graph string="SAV Tickets Analysis" type="bar">
+                <field name="reason" type="row" />
+                <field name="state" type="col" />
+                <field name="id" type="measure" />
+            </graph>
+        </field>
+    </record>
+
+</odoo>

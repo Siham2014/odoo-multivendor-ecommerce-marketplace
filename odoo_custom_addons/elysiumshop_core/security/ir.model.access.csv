@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_elysiumshop_vendor_admin,ElysiumShop Vendor - Admin,model_elysiumshop_vendor,base.group_system,1,1,1,1
+access_elysiumshop_delivery_person_admin,ElysiumShop Delivery Person - Admin,model_elysiumshop_delivery_person,base.group_system,1,1,1,1

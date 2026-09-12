@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Groups -->
+    <record id="group_sav_user" model="res.groups">
+        <field name="name">SAV User</field>
+        <field name="category_id" ref="base.module_category_technical"/>
+        <field name="comment">User can view and create SAV tickets</field>
+    </record>
+
+    <record id="group_sav_manager" model="res.groups">
+        <field name="name">SAV Manager</field>
+        <field name="category_id" ref="base.module_category_technical"/>
+        <field name="comment">Manager can manage all SAV tickets, approve/reject/refund</field>
+        <field name="implied_ids" eval="[(4, ref('group_sav_user'))]"/>
+    </record>
+
+    <!-- Sequence -->
+    <record id="seq_sav_ticket" model="ir.sequence">
+        <field name="name">SAV Ticket Sequence</field>
+        <field name="code">sav.ticket</field>
+        <field name="prefix">SAV/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
+
+</odoo>

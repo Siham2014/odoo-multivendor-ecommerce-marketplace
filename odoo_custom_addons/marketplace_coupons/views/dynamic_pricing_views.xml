@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Dynamic Pricing Tree View -->
+<record id="marketplace_coupons_view_pricing_tree" model="ir.ui.view">
+<field name="name">marketplace.dynamic.pricing.tree</field>
+<field name="model">marketplace.dynamic.pricing</field>
+<field name="arch" type="xml">
+<tree>
+<field name="vendor_id"/>
+<field name="strategy"/>
+<field name="min_margin_percent"/>
+<field name="max_margin_percent"/>
+<field name="active"/>
+</tree>
+</field>
+</record>
+
+<!-- Dynamic Pricing Form View -->
+<record id="marketplace_coupons_view_pricing_form" model="ir.ui.view">
+<field name="name">marketplace.dynamic.pricing.form</field>
+<field name="model">marketplace.dynamic.pricing</field>
+<field name="arch" type="xml">
+<form>
+<sheet>
+<div class="oe_title">
+<h1>
+<field name="vendor_id" options="{'no_create': True}"/>
+</h1>
+</div>
+<group>
+<group>
+<field name="strategy"/>
+<field name="active"/>
+</group>
+</group>
+<group string="Margin Constraints">
+<field name="min_margin_percent"/>
+<field name="max_margin_percent"/>
+</group>
+<group string="Recommended Price">
+<field name="recommended_price" readonly="1" widget="float"/>
+</group>
+</sheet>
+</form>
+</field>
+</record>
+
+<!-- Dynamic Pricing Search View -->
+<record id="marketplace_coupons_view_pricing_search" model="ir.ui.view">
+<field name="name">marketplace.dynamic.pricing.search</field>
+<field name="model">marketplace.dynamic.pricing</field>
+<field name="arch" type="xml">
+<search>
+<field name="vendor_id"/>
+<field name="strategy"/>
+<separator/>
+<filter name="filter_active" string="Active" domain="[('active', '=', True)]"/>
+<filter name="filter_inactive" string="Inactive" domain="[('active', '=', False)]"/>
+<separator/>
+<group string="Group By" expand="0">
+<filter name="group_by_vendor" string="Vendor" context="{'group_by': 'vendor_id'}"/>
+<filter name="group_by_strategy" string="Strategy" context="{'group_by': 'strategy'}"/>
+</group>
+</search>
+</field>
+</record>
+</odoo>

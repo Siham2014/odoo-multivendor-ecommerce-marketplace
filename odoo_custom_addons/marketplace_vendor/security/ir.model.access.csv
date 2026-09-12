@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vendor_user,marketplace.vendor user access,model_marketplace_vendor,marketplace_vendor.group_vendor_user,1,0,1,0
+access_vendor_product_user,marketplace.vendor.product user access,model_marketplace_vendor_product,marketplace_vendor.group_vendor_user,1,0,1,0
+access_vendor_payout_user,marketplace.vendor.payout user access,model_marketplace_vendor_payout,marketplace_vendor.group_vendor_user,1,0,0,0
+access_vendor_manager,marketplace.vendor manager access,model_marketplace_vendor,marketplace_vendor.group_vendor_manager,1,1,1,1
+access_vendor_product_manager,marketplace.vendor.product manager access,model_marketplace_vendor_product,marketplace_vendor.group_vendor_manager,1,1,1,1
+access_vendor_payout_manager,marketplace.vendor.payout manager access,model_marketplace_vendor_payout,marketplace_vendor.group_vendor_manager,1,1,1,1

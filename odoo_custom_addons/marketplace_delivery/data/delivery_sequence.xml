@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- Delivery Task Sequence for Tracking Numbers -->
+<record id="seq_marketplace_delivery_task" model="ir.sequence">
+<field name="name">Delivery Task Sequence</field>
+<field name="code">marketplace.delivery.task</field>
+<field name="prefix">DLV/</field>
+<field name="padding">5</field>
+<field name="number_next">1</field>
+<field name="number_increment">1</field>
+</record>
+
+</odoo>
